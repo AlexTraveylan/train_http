@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 
-from sqlite import get_all_members, insert
+from sqlite import create_table, get_all_members, insert
 
 app = Flask(__name__)
+
+create_table()
 
 
 @app.route("/")
