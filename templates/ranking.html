@@ -6,11 +6,20 @@
     <title>Classement</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">retour</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section>
         <h1>Classement :</h1>
         {% for member in members %}
             <p>#{{ loop.index }} {{ member.name }} : {{ member.score }}</p>
         {% endfor %}
     </section>
+
 </body>
 </html>
