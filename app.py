@@ -1,0 +1,33 @@
+from flask import Flask, render_template, request
+
+from sqlite import get_all_members, insert
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("form.html")
+
+
+@app.route("/ranking")
+def ranking():
+
+    members = get_all_members()
+    sorted_members = sorted(members, key=lambda x: x.score, reverse=True)
+
+    return render_template("ranking.html", members=sorted_members)
+
+
+@app.route("/submit", methods=["POST"])
+def submit():
+
+    name = request.json["username"]
+    email = request.json["email"]
+    score = request.json["randomScore"]
+
+    insert(name, email, score)
+
+    return app.response_class(
+        response={"message": "Member added"}, status=201, mimetype="application/json"
+    )
