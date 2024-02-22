@@ -30,6 +30,4 @@ def submit():
 
     insert(name, email, score)
 
-    return app.response_class(
-        response={"message": "Member added"}, status=201, mimetype="application/json"
-    )
+    return {"message": "Member added"}, 201
