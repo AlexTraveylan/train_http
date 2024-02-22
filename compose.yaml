@@ -1,0 +1,12 @@
+networks:
+  appnw:
+    name: appnw
+services:
+  httptraincomposed:
+    container_name: httptrain
+    image: httptrain:latest
+    ports:
+      - 5000:5000
+    networks:
+      - appnw
+
